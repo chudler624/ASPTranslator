@@ -1,5 +1,6 @@
 ﻿
 
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -10,7 +11,7 @@ namespace ASPTranslator.Models
 	
 		public GoogleApi() { }
 
-		public string GetTranslation(string textToTranslate, string targetLanguage, string sourceLanguage) {
+		public TranslationModel GetTranslation(TranslationModel translation) { 
 
 			var client = new HttpClient();
 			var request = new HttpRequestMessage
@@ -24,19 +25,22 @@ namespace ASPTranslator.Models
 				},
 							Content = new FormUrlEncodedContent(new Dictionary<string, string>
 				{
-					{ "q", textToTranslate },
-					{ "target", targetLanguage },
-					{ "source", sourceLanguage },
+					{ "q", translation.TextToTranslate },
+					{ "target", translation.TargetLanguage },
+					{ "source", translation.SourceLanguage },
 				}),
 			};
+			string translationText;
 			using (var response = client.SendAsync(request).Result)
 			{
 				response.EnsureSuccessStatusCode();
-				//var body = response.Content.ReadAsStringAsync().Result;
-				//Console.WriteLine(body);
-			}
+                var body = response.Content.ReadAsStringAsync().Result;
+				translationText = JObject.Parse(body)["data"]["translations"][0]["translatedText"].ToString();
+                /*Console.WriteLine(body)*/;
+            }
 
-			return "";
+			translation.Translation = translationText;
+			return translation;
 		}
 	}
 	

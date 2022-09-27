@@ -35,3 +35,4 @@ C:\Users\chudl\Desktop\Final Project\ASPTranslator\ASPTranslator\ASPTranslator\o
 C:\Users\chudl\Desktop\Final Project\ASPTranslator\ASPTranslator\ASPTranslator\obj\Debug\netcoreapp3.1\ASPTranslator.dll
 C:\Users\chudl\Desktop\Final Project\ASPTranslator\ASPTranslator\ASPTranslator\obj\Debug\netcoreapp3.1\ASPTranslator.pdb
 C:\Users\chudl\Desktop\Final Project\ASPTranslator\ASPTranslator\ASPTranslator\obj\Debug\netcoreapp3.1\ASPTranslator.genruntimeconfig.cache
+C:\Users\chudl\Desktop\Final Project\ASPTranslator\ASPTranslator\ASPTranslator\obj\Debug\netcoreapp3.1\Razor\Views\Home\Translate.cshtml.g.cs

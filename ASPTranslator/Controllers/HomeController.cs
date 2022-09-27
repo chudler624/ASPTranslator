@@ -20,22 +20,23 @@ namespace ASPTranslator.Controllers
 
         public IActionResult Index()
         {
-            var testText = "";
+            var translation = new TranslationModel();
+            //var testText = "hello world";
 
-            try
-            {
-                var targetLanguage = "";
-                var sourceLanguage = "";
-                var googleApi = new GoogleApi();
-                var result = googleApi.GetTranslation("Hello World", targetLanguage, sourceLanguage);
-            }
-            catch (Exception ex) 
-            {
-                var tmp = ex;
-            }
+            //try
+            //{
+            //    var targetLanguage = "";
+            //    var sourceLanguage = "";
+            //    var googleApi = new GoogleApi();
+            //    var result = googleApi.GetTranslation("Hello World", targetLanguage, sourceLanguage);
+            //}
+            //catch (Exception ex) 
+            //{
+            //    var tmp = ex;
+            //}
             
 
-            return View();
+            return View(translation);
         }
 
         public IActionResult Privacy()
@@ -48,5 +49,17 @@ namespace ASPTranslator.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult Translate(TranslationModel translation)
+        {
+            var googleApi = new GoogleApi();
+            
+            
+            return View(googleApi.GetTranslation(translation));
+        }
+
+
+
+
     }
 }

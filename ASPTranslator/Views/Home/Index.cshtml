@@ -1,8 +1,82 @@
-﻿@{
+﻿@model TranslationModel
+
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">Translator</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+
+
+@using (Html.BeginForm("Translate", "Home", "Post"))
+{
+    <label asp-for="TextToTranslate" class="control-label">Text To Translate</label>
+    <input type="text" name="TextToTranslate" class="form-control" value="" />
+     <div class="form-group">
+        <label for="">Select Source Language</label>
+        <select class="form-control" name="SourceLanguage" value="">
+            @foreach (var language in Model.languages)
+            {
+                <option value="@language">@language</option>
+            }
+        </select>
+    </div>
+
+      <div class="form-group">
+        <label for="">Select Target Language</label>
+        <select class="form-control" name="TargetLanguage" value="">
+            @foreach (var  language in Model.languages)
+            {
+                <option value="@language">@language</option>
+            }
+        </select>
+    </div>
+
+
+    
+    <input type="submit" value="Translate" class="btn btn-primary" />
+ }
+
+
+
+
+@*
+<head><title>From Language</title></head>
+<body>
+<form>
+    <select name="Languages">
+        <option value="English">"en"</option>
+        <option value="Spanish">"es"</option>
+        <option value="Italian">"it"</option>
+        <option value="Portugese">"pt"</option>
+        <option value="French">"fr"</option>
+        <option value="German">"de"</option>
+    </select>
+</form>
+</body>
+
+<head><title>To Language</title></head>
+<body>
+<form>
+    <select name="Languages">
+        <option value="English">"en"</option>
+        <option value="Spanish" selected>"es"</option>
+        <option value="Italian">"it"</option>
+        <option value="Portugese">"pt"</option>
+        <option value="French">"fr"</option>
+        <option value="German">"de"</option>
+    </select>
+</form>
+</body>
+
+
+      <header3>Enter Text To Be Translated</header3>
+<input type="text" />
+<textarea rows="10"></textarea>
+
+
+<button>Translate</button>*@
