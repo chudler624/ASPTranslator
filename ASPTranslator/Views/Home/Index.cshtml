@@ -1,6 +1,5 @@
 ﻿@model TranslationModel
 
-
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -10,8 +9,6 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
-
-
 @using (Html.BeginForm("Translate", "Home", "Post"))
 {
     <label asp-for="TextToTranslate" class="control-label">Text To Translate</label>
@@ -19,9 +16,9 @@
      <div class="form-group">
         <label for="">Select Source Language</label>
         <select class="form-control" name="SourceLanguage" value="">
-            @foreach (var language in Model.languages)
+            @foreach (var language in Model.LanguagesDic)
             {
-                <option value="@language">@language</option>
+                <option value="@language.Key">@language.Value</option>
             }
         </select>
     </div>
@@ -29,20 +26,15 @@
       <div class="form-group">
         <label for="">Select Target Language</label>
         <select class="form-control" name="TargetLanguage" value="">
-            @foreach (var  language in Model.languages)
+            @foreach (var  language in Model.LanguagesDic)
             {
-                <option value="@language">@language</option>
+                <option value="@language.Key">@language.Value</option>
             }
         </select>
     </div>
 
-
-    
     <input type="submit" value="Translate" class="btn btn-primary" />
  }
-
-
-
 
 @*
 <head><title>From Language</title></head>
